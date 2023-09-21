@@ -12,8 +12,8 @@ namespace MainMenu
             { "HomeWork 01 : [C sharp intro]",
               "Task_1: FizzBuzz",
               "Task_2: Percentage",
-              "Task_3: ",
-              "Task_4: ",
+              "Task_3: 4_Digits_to_Number",
+              "Task_4: Change digits in 6-digits number",
               "Task_5: "
             };
 
