@@ -10,7 +10,7 @@ namespace MainMenu
     {
         List<string>? _menu_elements = new List<string>()
             { "HomeWork 01 : [C sharp intro]",
-              "Task_1: ",
+              "Task_1: FizzBuzz",
               "Task_2: ",
               "Task_3: ",
               "Task_4: ",
