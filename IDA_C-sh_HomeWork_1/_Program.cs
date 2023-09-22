@@ -166,7 +166,6 @@ namespace IDA_C_sh_HomeWork_1
             } 
 
         }
-
         public static void Task_6(string work_name)
         /*  Пользователь вводит с клавиатуры показания тем-
         пературы. В зависимости от выбора пользователя про-
@@ -180,7 +179,7 @@ namespace IDA_C_sh_HomeWork_1
             switch (temp_system)
             {
                 case Temperature_system.Celcius: user_temp = user_temp + 273.15; break;
-                case Temperature_system.Farenheit: user_temp = (user_temp - 32)*5/9 + 273.15; break;
+                case Temperature_system.Farenheit: user_temp = ((user_temp) - 32)*5/9 + 273.15; break;
             }
             if (user_temp < 0) { throw new Exception("\nAbsolute temperature couldn't be below 0"); }
 
@@ -190,28 +189,51 @@ namespace IDA_C_sh_HomeWork_1
                 "3. Farenheit\n" +
                 "choose -> "
                 );
-            
-            switch (ServiceFunction.Get_Int(1,3))
+            switch (ServiceFunction.Get_Int(1, 3))
             {
-                case 1: user_temp = user_temp - 273.15; break;
-                case 3: user_temp = (user_temp+32)*9/5 - 273.15; break;
+                case 1: temp_system = Temperature_system.Celcius; break;
+                case 2: temp_system = Temperature_system.Kelvin; break;
+                case 3: temp_system = Temperature_system.Farenheit; break;
             }
 
-            Console.WriteLine(user_temp);
+            void Show_Temprature()
+            {
+                Console.Write("\n Temperature is ");
+                switch (temp_system)
+                {
+                    case Temperature_system.Celcius: Console.Write(user_temp - 273.15); break;
+                    case Temperature_system.Farenheit: Console.Write(((user_temp-273.15)*9/5) + 32); break;
+                    case Temperature_system.Kelvin: Console.Write(user_temp); break;
+
+                }
+                Console.WriteLine(temp_system);
+            }
+            Show_Temprature();
         }
         enum Temperature_system { Celcius, Kelvin, Farenheit };
         static Temperature_system temp_system = Temperature_system.Celcius;
-
         public static void Task_7(string work_name)
-        /*  Пользователь вводит с клавиатуры дату.Приложе-
-        ние должно отобразить название сезона и дня недели.
-        Например, если введено 22.12.2021, приложение должно
-        отобразить Winter Wednesday.
+        /*  Пользователь вводит с клавиатуры два числа. Нужно
+        показать все четные числа в указанном диапазоне. Если
+        границы диапазона указаны неправильно требуется про-
+        извести нормализацию границ. Например, пользователь
+        ввел 20 и 11, требуется нормализация, после которой
+        начало диапазона станет равно 11, а конец 20.
         */
         {
-
+            Console.WriteLine(work_name);
+            Console.Write("\nEnter range bound 1 -> ");
+            int range_1 = ServiceFunction.Get_Int();
+            Console.Write("\nEnter range bound 2 -> ");
+            int range_2 = ServiceFunction.Get_Int();
+            if (range_1 > range_2) ServiceFunction.swap(ref range_1, ref range_2);
+            Console.WriteLine("\nEven numbers in range [" + range_1 + ".." + range_2 + "]:");
+            for (int i = range_1; i <= range_2; i++) 
+            {
+            if (i%2==0) { Console.Write(i + " | "); }
+            }
         }
-
-    }
-}
+        
+    }// class Program
+}// namespace
 

@@ -181,6 +181,13 @@ namespace Service
             string tmp_str_2 = tmp_str.Insert(index_to_change_1, tmp_char.ToString()).Remove(index_to_change_2+1, 1);
             return tmp_str_2;
         }
+    
+    public static void swap (ref int num_1, ref int num_2)
+        {            
+            int tmp = num_1;
+                num_1= num_2;
+                num_2 = tmp;            
+        }
 
 
     } //    internal class ServiceFunction
