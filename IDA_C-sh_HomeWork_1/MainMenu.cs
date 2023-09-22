@@ -14,7 +14,9 @@ namespace MainMenu
               "Task_2: Percentage",
               "Task_3: 4_Digits_to_Number",
               "Task_4: Change digits in 6-digits number",
-              "Task_5: "
+              "Task_5: Date view transform",
+              "Task_6: Temprature view transform: F/C",
+              "Task_7: Date view transform"
             };
 
         public void AddElement(string menu_element) { _menu_elements.Add(menu_element); }
@@ -31,6 +33,7 @@ namespace MainMenu
         public int User_Choice_Handle()
         {
             int? choice = Service.ServiceFunction.Get_Int_Positive();
+            Console.Write("\n\n***\t");
 
             // Обработка выбора пользователя
             if (choice == 0)
@@ -43,8 +46,12 @@ namespace MainMenu
             else if (choice == 1) IDA_C_sh_HomeWork_1.Program.Task_1(_menu_elements[1]);
             else if (choice == 2) IDA_C_sh_HomeWork_1.Program.Task_2(_menu_elements[2]);
             else if (choice == 3) IDA_C_sh_HomeWork_1.Program.Task_3(_menu_elements[3]);
-            //else if (choice == 4) IDA_C_sh_HomeWork_1.Program.Task_4(_menu_elements[4]);
-            //else if (choice == 5) IDA_C_sh_HomeWork_1.Program.Task_5(_menu_elements[5]);
+            else if (choice == 4) IDA_C_sh_HomeWork_1.Program.Task_4(_menu_elements[4]);
+            else if (choice == 5) IDA_C_sh_HomeWork_1.Program.Task_5(_menu_elements[5]);
+            else if (choice == 6) IDA_C_sh_HomeWork_1.Program.Task_6(_menu_elements[6]);
+            else if (choice == 7) IDA_C_sh_HomeWork_1.Program.Task_7(_menu_elements[7]);
+            //else if (choice == 8) IDA_C_sh_HomeWork_1.Program.Task_8(_menu_elements[8]);
+
 
             else { Console.Write("\nSuch choice does not exist yet\n"); Thread.Sleep(1000); }
             return 1;

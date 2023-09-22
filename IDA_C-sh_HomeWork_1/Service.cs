@@ -54,16 +54,22 @@ namespace Service
                             Console.WriteLine("Input Error: Minus misstanding. [INTEGER] expected.\n");
                             return Get_Int(lower_bound, upper_bound, comment);
                         }
-                    }
-                        try
+                    }                            
+                    
+                    try
+                    {
+                        int try_to_get_int = Convert.ToInt32(a);                        
+                        if (try_to_get_int < lower_bound || try_to_get_int > upper_bound)
                         {
-                            return Convert.ToInt32(a);
+                            Console.WriteLine(comment);
+                            return Get_Int(lower_bound, upper_bound, comment);
                         }
-                        catch (OverflowException)
+                    }
+                    catch (OverflowException)
                         {
                             Console.Write("Input Error: overflow. [INTEGER] expected.\n");
                         }
-                    
+                    return Convert.ToInt32(a);
                 }
                 else
                 {
@@ -109,19 +115,29 @@ namespace Service
                         }
 
                     }
+
+                    // попытаемся конвертировать строку ввода в double
                     try
                         {
-                            return Convert.ToDouble(a);
+                            
+                        double try_convert_to_double =  Convert.ToDouble(a);
+                        if (try_convert_to_double < lower_bound || try_convert_to_double > upper_bound)
+                        {
+                            Console.WriteLine(comment);
+                            return Get_Double(lower_bound, upper_bound, comment);
                         }
-                        catch (OverflowException)
+
+                    }
+                    catch (OverflowException)
                         {
                             Console.Write("Input Error: overflow. [DOUBLE] expected.\n");
                         }
-                    
+                    return Convert.ToDouble(a);
+
                 }
                 else
                 {
-                    Console.Write("Input Error: [DOUBLE] expected.\n");
+                    Console.Write("Input Error: [DOUBLE] expected. Use [,] instead of [.]\n");
                     return Get_Double(lower_bound, upper_bound, comment);
                 }
             }
@@ -151,18 +167,18 @@ namespace Service
         if (number_to_check % 5 == 0) { return "Buzz"; }
         else return Convert.ToString(number_to_check);
     }
-    public static string Replace_Char_in_String(string original_string, int digits_to_change_1, int digits_to_change_2)
+    public static string Replace_Char_in_String(string original_string, int index_to_change_1, int index_to_change_2)
         {
-            if (digits_to_change_1 > digits_to_change_2)
+            if (index_to_change_1 > index_to_change_2)
             {
-                int tmp_int = digits_to_change_1;
-                digits_to_change_1 = digits_to_change_2;
-                digits_to_change_2 = tmp_int;
+                int tmp_int = index_to_change_1;
+                index_to_change_1 = index_to_change_2;
+                index_to_change_2 = tmp_int;
             }
-            char tmp_char = original_string[digits_to_change_1];
-            string tmp_str = original_string.Insert(digits_to_change_2, tmp_char.ToString()).Remove(digits_to_change_1,1);
-            tmp_char = original_string[digits_to_change_2];
-            string tmp_str_2 = tmp_str.Insert(digits_to_change_1, tmp_char.ToString()).Remove(digits_to_change_2, 1);
+            char tmp_char = original_string[index_to_change_1];
+            string tmp_str = original_string.Insert(index_to_change_2, tmp_char.ToString()).Remove(index_to_change_1,1);
+            tmp_char = original_string[index_to_change_2];
+            string tmp_str_2 = tmp_str.Insert(index_to_change_1, tmp_char.ToString()).Remove(index_to_change_2+1, 1);
             return tmp_str_2;
         }
 
