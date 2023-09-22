@@ -146,7 +146,6 @@ namespace Service
 
             return Get_Double(lower_bound, upper_bound, comment);
         }
-
     public static int? FindFirstNotOf(string source, string chars)
     {
         if (source == null) throw new ArgumentNullException("source");

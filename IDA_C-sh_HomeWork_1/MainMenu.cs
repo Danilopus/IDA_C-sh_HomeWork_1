@@ -59,9 +59,5 @@ namespace MainMenu
 
         //public int User_Choice_Handle(int key_code);
 
-
-
-
-
     } // class MainMenu
 } // namespace
